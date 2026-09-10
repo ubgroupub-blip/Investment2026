@@ -1,0 +1,31 @@
+[
+  {
+    "id": "reg-1789023719517",
+    "ticketNumber": "D1-2026-7404",
+    "fullName": "Kenji Tanaka",
+    "organization": "Sumitomo Corporation",
+    "jobTitle": "Chief Representative",
+    "participationType": "Full Event (Day 1 & Day 2)",
+    "email": "k.tanaka@example.com",
+    "phone": "+81 90-1234-5678",
+    "investmentAmount": "15,000,000",
+    "sectorsOfInterest": "Mining & Clean Tech",
+    "attendingDays": "both",
+    "registeredAt": "2026-09-10T07:01:59.517Z"
+  },
+  {
+    "id": "reg-seed-01",
+    "ticketNumber": "ADV-2026-8812",
+    "fullName": "Michael Vance",
+    "organization": "Global Infrastructure Partners",
+    "jobTitle": "Managing Director",
+    "participationType": "Full Event (Day 1 & Day 2)",
+    "email": "m.vance@gipartners-demo.com",
+    "phone": "+1 415-555-0192",
+    "investmentAmount": "25,000,000",
+    "sectorsOfInterest": "Renewable energy, mining logistics, cross-border infrastructure",
+    "additionalNotes": "Requesting 1:1 meeting with Ministry of Economy & Erdenes Mongol",
+    "attendingDays": "both",
+    "registeredAt": "2026-09-10T05:01:53.546Z"
+  }
+]
