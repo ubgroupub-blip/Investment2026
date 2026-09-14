@@ -2,22 +2,18 @@ import React from 'react';
 import { MongolianFlag } from './MongolianFlag';
 import { Soyombo } from './Soyombo';
 import { Language } from '../types';
-import { Users, UserPlus, MapPin, Globe } from 'lucide-react';
+import { UserPlus, MapPin, Globe } from 'lucide-react';
 
 interface HeaderProps {
   language: Language;
   onSelectLanguage: (lang: Language) => void;
   onOpenRegister: () => void;
-  onOpenDelegates: () => void;
-  registeredCount: number;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   language,
   onSelectLanguage,
   onOpenRegister,
-  onOpenDelegates,
-  registeredCount,
 }) => {
   const getTitle = () => {
     if (language === 'zh') return '推进投资 · 加速发展';
@@ -110,23 +106,6 @@ export const Header: React.FC<HeaderProps> = ({
                 日本語
               </button>
             </div>
-
-            {/* View Registered Delegates & Excel Sync */}
-            {registeredCount > 0 && (
-              <button
-                id="view-delegates-btn"
-                onClick={onOpenDelegates}
-                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-slate-900 hover:bg-slate-800 text-amber-300 border border-amber-500/30 transition cursor-pointer"
-              >
-                <Users className="w-3.5 h-3.5 text-amber-400" />
-                <span>
-                  {language === 'zh' ? '参会名单' : language === 'ja' ? '登録者リスト' : 'Delegates'}
-                </span>
-                <span className="ml-1 px-1.5 py-0.2 rounded-full bg-amber-500/20 text-[10px] font-extrabold text-amber-300">
-                  {registeredCount}
-                </span>
-              </button>
-            )}
 
             {/* Primary Registration Button */}
             <button

@@ -3,6 +3,7 @@ import { Language, RegistrationData } from '../types';
 import { DelegatePass } from './DelegatePass';
 import { MongolianFlag } from './MongolianFlag';
 import { X, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { submitRegistration } from '../services/registrationService';
 
 interface RegistrationModalProps {
   isOpen: boolean;
@@ -170,43 +171,12 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
     };
 
     try {
-// Sync registration to Google Sheets v4
-const googleSheetWebhookUrl =
-  'https://script.google.com/macros/s/AKfycby6LrkJuY07tbFdFCDj_W0tJsTtPxuOsdEOc8N5kLkQ7BGskVO0g1wfzm0cAJLTrLLVSw/exec';
-
-const formData = new FormData();
-formData.append('payload', JSON.stringify(payload));
-
-fetch(googleSheetWebhookUrl, {
-  method: 'POST',
-  body: formData,
-  mode: 'no-cors',
-}).catch((error) => {
-  console.error('Google Sheets sync failed:', error);
-});
-      const response = await fetch('/api/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      const result = await response.json();
-
-      if (response.ok && result.success) {
-        const confirmedData: RegistrationData = result.registration;
-        onSuccessRegister(confirmedData);
-        setSubmittedData(confirmedData);
-      } else {
-        const fallbackTicket = `ADV-2026-${Math.floor(1000 + Math.random() * 9000)}`;
-        const fallbackData: RegistrationData = {
-          id: `reg-${Date.now()}`,
-          ticketNumber: fallbackTicket,
-          ...payload,
-          registeredAt: new Date().toISOString(),
-        };
-        onSuccessRegister(fallbackData);
-        setSubmittedData(fallbackData);
-      }
-    } catch {
+      const confirmedData = await submitRegistration(payload);
+      onSuccessRegister(confirmedData);
+      setSubmittedData(confirmedData);
+    } catch (err) {
+      console.error('Registration processing notice:', err);
+      // Fallback ticket generation in rare unexpected failure
       const fallbackTicket = `ADV-2026-${Math.floor(1000 + Math.random() * 9000)}`;
       const fallbackData: RegistrationData = {
         id: `reg-${Date.now()}`,

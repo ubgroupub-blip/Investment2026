@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Language, RegistrationData } from '../types';
 import { DelegatePass } from './DelegatePass';
 import { CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import { submitRegistration } from '../services/registrationService';
 
 interface RegistrationSectionProps {
   language: Language;
@@ -182,34 +183,12 @@ export const RegistrationSection: React.FC<RegistrationSectionProps> = ({
     };
 
     try {
-      const response = await fetch('/api/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      });
-
-      const result = await response.json();
-
-      if (response.ok && result.success) {
-        const confirmedData: RegistrationData = result.registration;
-        onSuccessRegister(confirmedData);
-        setSubmittedPass(confirmedData);
-      } else {
-        // Fallback local registration if offline or proxy error
-        const fallbackTicket = `ADV-2026-${Math.floor(1000 + Math.random() * 9000)}`;
-        const fallbackData: RegistrationData = {
-          id: `reg-${Date.now()}`,
-          ticketNumber: fallbackTicket,
-          ...payload,
-          registeredAt: new Date().toISOString(),
-        };
-        onSuccessRegister(fallbackData);
-        setSubmittedPass(fallbackData);
-      }
-    } catch {
-      // Local fallback in case network call interrupted
+      const confirmedData = await submitRegistration(payload);
+      onSuccessRegister(confirmedData);
+      setSubmittedPass(confirmedData);
+    } catch (err) {
+      console.error('Registration processing notice:', err);
+      // Fallback local registration if network interrupted
       const fallbackTicket = `ADV-2026-${Math.floor(1000 + Math.random() * 9000)}`;
       const fallbackData: RegistrationData = {
         id: `reg-${Date.now()}`,

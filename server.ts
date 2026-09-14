@@ -223,15 +223,16 @@ app.post("/api/register", async (req: Request, res: Response) => {
     saveRegistrations(records);
 
     // Server-side Organizer Notification & Google Drive Excel Sync
-    // (Email recipient strictly maintained server-side; NEVER exposed to client)
-    const organizerTarget = process.env.ORGANIZER_NOTIFICATION_EMAIL || "tergel@ubgroup.mn";
+    // (Email recipient strictly maintained server-side or in Apps Script; NEVER exposed to client)
+    const organizerTarget = process.env.ORGANIZER_NOTIFICATION_EMAIL || "organizer-notifications@internal";
 
     console.log(`[REGISTRATION DISPATCH] New registration received: ${newRecord.ticketNumber}`);
     console.log(`[DISPATCH EMAIL] Notification generated for organizer: ${organizerTarget}`);
-    console.log(`[DISPATCH EXCEL] Synced to Google Drive Excel workbook: ${EXCEL_FILE}`);
+    console.log(`[DISPATCH EXCEL] Synced to local workbook: ${EXCEL_FILE}`);
 
-    // Optional webhook trigger for Google Drive / Google Sheets Live Integration
-    if (process.env.GOOGLE_SHEET_WEBHOOK_URL) {
+    // Optional webhook trigger for Google Sheets (skip if client already synced directly to avoid duplicate rows)
+    const alreadySynced = req.headers['x-client-synced'] === 'true';
+    if (!alreadySynced && process.env.GOOGLE_SHEET_WEBHOOK_URL) {
       try {
         await fetch(process.env.GOOGLE_SHEET_WEBHOOK_URL, {
           method: "POST",
