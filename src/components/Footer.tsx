@@ -1,6 +1,6 @@
 import React from 'react';
 import { Language } from '../types';
-import { MongolianFlag } from './MongolianFlag';
+import { EventLogo } from './EventLogo';
 import { Soyombo } from './Soyombo';
 import { Building2, Award } from 'lucide-react';
 
@@ -73,7 +73,7 @@ export const Footer: React.FC<FooterProps> = ({ language, onOpenRegister }) => {
           {/* Brand & Overview */}
           <div className="md:col-span-6 space-y-3.5">
             <div className="flex items-center gap-3">
-              <MongolianFlag variant="badge" className="w-12 h-6 ring-1 ring-amber-400/40" />
+              <EventLogo variant="footer" className="h-11 w-auto max-w-[120px]" />
               <div>
                 <h4 className="font-extrabold text-white text-base">
                   {t.title}

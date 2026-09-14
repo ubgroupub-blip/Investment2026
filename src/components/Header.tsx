@@ -1,5 +1,5 @@
 import React from 'react';
-import { MongolianFlag } from './MongolianFlag';
+import { EventLogo } from './EventLogo';
 import { Soyombo } from './Soyombo';
 import { Language } from '../types';
 import { UserPlus, MapPin, Globe } from 'lucide-react';
@@ -42,11 +42,12 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Brand & Flag */}
           <div className="flex items-center gap-3.5 sm:gap-4">
             <div className="relative group shrink-0">
-              <MongolianFlag
-                variant="rounded"
-                className="w-14 sm:w-16 h-7 sm:h-8 ring-2 ring-amber-400/50 shadow-lg shadow-red-950/40"
+              <EventLogo
+                variant="header"
+                className="h-10 sm:h-12 w-auto max-w-[140px]"
+                alt="MI 2026 - High-Level Investment Dialogue"
               />
-              <span className="sr-only">National Flag of Mongolia</span>
+              <span className="sr-only">MI 2026 - High-Level Investment Dialogue</span>
             </div>
 
             <div>

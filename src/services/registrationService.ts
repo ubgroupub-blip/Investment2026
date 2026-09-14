@@ -96,7 +96,17 @@ export async function submitRegistration(
     console.warn('Google Sheets sync non-blocking catch:', err);
   }
 
-  // 2. Optional local server dispatch when running with Express backend
+  // 2. Direct Google Drive / Google Sheets API append if user authorized OAuth
+  try {
+    const { appendRegistrationToGoogleSheet } = await import('./googleSheetsService');
+    await appendRegistrationToGoogleSheet(record).catch((err) => {
+      console.warn('Google Drive direct append notice:', err);
+    });
+  } catch (err) {
+    console.warn('Google Sheets direct service notice:', err);
+  }
+
+  // 3. Optional local server dispatch when running with Express backend
   // Note: on Vercel static builds, this harmlessly fails and is safely caught.
   try {
     fetch('/api/register', {

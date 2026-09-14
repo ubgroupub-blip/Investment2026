@@ -1,7 +1,6 @@
 import React from 'react';
 import { Language } from '../types';
 import { MapPin, Navigation, Bus, Shirt, Clock, ShieldCheck, Sun, Info } from 'lucide-react';
-import { MongolianFlag } from './MongolianFlag';
 
 interface VenuesSectionProps {
   language: Language;
@@ -36,18 +35,18 @@ export const VenuesSection: React.FC<VenuesSectionProps> = ({ language }) => {
             </span>
             <span className="text-xs text-slate-400 flex items-center gap-1">
               <Clock className="w-3.5 h-3.5" />
-              08:30 – 15:00 (+ Gala)
+              08:30 – 15:00
             </span>
           </div>
 
           <h4 className="text-lg font-bold text-white mb-2">
-            {isMn ? 'Улаанбаатар Хотын Чуулганы Танхим' : 'Grand Convention Hall, Ulaanbaatar'}
+            {isMn ? 'Олон Улсын Худалдааны Төв, Зу Баллрүүм' : 'International Trade Center, Zu Ballroom'}
           </h4>
 
           <p className="text-xs text-slate-300 leading-relaxed mb-4">
             {isMn 
-              ? 'Төрийн дээд түвшний удирдлагууд, яам тамгын газрууд, хөрөнгө оруулалтын сангуудын нэгдсэн чуулган, Deal Room танхим болон Гала хүлээн авалт болно.'
-              : 'Hosting top state leaders, ministries, investment funds, B2B Deal Room matchmaking, and the evening Gala Dinner.'}
+              ? 'Төрийн дээд түвшний удирдлагууд, яам тамгын газрууд, хөрөнгө оруулалтын сангуудын нэгдсэн чуулган, Deal Room танхим зохион байгуулагдана.'
+              : 'Hosting top state leaders, ministries, investment funds, and B2B Deal Room matchmaking sessions.'}
           </p>
 
           <div className="space-y-2 text-xs text-slate-400 border-t border-slate-800/80 pt-3">

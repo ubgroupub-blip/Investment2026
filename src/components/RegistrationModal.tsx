@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Language, RegistrationData } from '../types';
 import { DelegatePass } from './DelegatePass';
-import { MongolianFlag } from './MongolianFlag';
+import { EventLogo } from './EventLogo';
 import { X, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import { submitRegistration } from '../services/registrationService';
 
@@ -211,7 +211,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
         {/* Modal Header */}
         <div className="flex items-center justify-between p-5 border-b border-slate-800">
           <div className="flex items-center gap-3">
-            <MongolianFlag variant="badge" className="w-10 h-5 ring-1 ring-amber-400/40" />
+            <EventLogo variant="badge" className="h-9 w-auto max-w-[100px]" />
             <div>
               <h3 className="font-bold text-base sm:text-lg text-white">
                 {submittedData ? t.successTitle : t.modalTitle}

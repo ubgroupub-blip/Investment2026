@@ -1,6 +1,6 @@
 import React from 'react';
 import { RegistrationData, Language } from '../types';
-import { MongolianFlag } from './MongolianFlag';
+import { EventLogo } from './EventLogo';
 import { Soyombo } from './Soyombo';
 import { Printer, CheckCircle, Building, Briefcase } from 'lucide-react';
 
@@ -57,7 +57,7 @@ export const DelegatePass: React.FC<DelegatePassProps> = ({
           </div>
 
           <div className="flex justify-center mb-3">
-            <MongolianFlag variant="badge" className="w-16 h-8 ring-2 ring-amber-400/60" />
+            <EventLogo variant="pass" className="h-14 w-auto max-w-[150px] ring-1 ring-amber-400/40" />
           </div>
 
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30 text-[10px] font-bold uppercase tracking-wider mb-1.5">

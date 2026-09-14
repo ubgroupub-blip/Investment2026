@@ -1,5 +1,5 @@
 import React from 'react';
-import { MongolianFlag } from './MongolianFlag';
+import { EventLogo } from './EventLogo';
 import { Soyombo } from './Soyombo';
 import { Language } from '../types';
 import { CheckCircle2, UserCheck, ArrowRight } from 'lucide-react';
@@ -89,9 +89,9 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
           {/* Main Hero Copy */}
           <div className="lg:col-span-8 space-y-4">
             
-            {/* National Badge with Mongolian Flag */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/80 text-xs text-slate-200 shadow-inner">
-              <MongolianFlag variant="badge" className="w-6 h-3 rounded-sm" />
+            {/* National Badge with Event Logo */}
+            <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/80 text-xs text-slate-200 shadow-inner">
+              <EventLogo variant="badge" className="h-5 w-auto max-w-[50px] p-0.5 rounded" />
               <span className="font-bold tracking-wide text-amber-300 uppercase">
                 {t.badge}
               </span>

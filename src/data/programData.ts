@@ -13,9 +13,9 @@ export const PROGRAM_DAYS: DayProgram[] = [
     subtitleEn: 'Advancing Investment, Accelerating Development',
     subtitleZh: '推进投资，加速发展：转化经济潜能为现实机遇',
     subtitleJa: '投資の推進、発展の加速：経済の潜在力を投資機会へ',
-    venueEn: 'Ulaanbaatar, Grand Convention Hall',
-    venueZh: '乌兰巴托市 · 国际会议大厅',
-    venueJa: 'ウランバートル市 · グランドコンベンションホール',
+    venueEn: 'International Trade Center, Zu Ballroom',
+    venueZh: '国际贸易中心 · 祖宴会厅（International Trade Center, Zu Ballroom）',
+    venueJa: '国際貿易センター · ズー・ボールルーム（Zu Ballroom）',
     schedule: [
       {
         id: 'd1-1',
