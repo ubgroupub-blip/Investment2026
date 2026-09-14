@@ -174,7 +174,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
 const googleSheetWebhookUrl = import.meta.env.VITE_GOOGLE_SHEET_WEBHOOK_URL;
 
 if (googleSheetWebhookUrl) {
-  fetch(googleSheetWebhookUrl, {
+await fetch(googleSheetWebhookUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'text/plain;charset=utf-8',
