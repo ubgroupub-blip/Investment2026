@@ -170,7 +170,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
     };
 
     try {
-      // Sync registration to Google Sheets
+// Sync registration to Google Sheets v2 
 const googleSheetWebhookUrl = 'https://script.google.com/macros/s/AKfycby6LrkJuY07tbFdFCDj_W0tJsTtPxuOsdEOc8N5kLkQ7BGskVO0g1wfzm0cAJLTrLLVSw/exec';
 
 if (googleSheetWebhookUrl) {
