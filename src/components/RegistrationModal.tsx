@@ -171,7 +171,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
 
     try {
       // Sync registration to Google Sheets
-const googleSheetWebhookUrl = import.meta.env.VITE_GOOGLE_SHEET_WEBHOOK_URL;
+const googleSheetWebhookUrl = 'https://script.google.com/macros/s/AKfycby6LrkJuY07tbFdFCDj_W0tJsTtPxuOsdEOc8N5kLkQ7BGskVO0g1wfzm0cAJLTrLLVSw/exec';
 
 if (googleSheetWebhookUrl) {
 await fetch(googleSheetWebhookUrl, {
