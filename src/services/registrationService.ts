@@ -53,7 +53,17 @@ export async function submitRegistration(
     const formData = new FormData();
     // Stringified payload (standard Apps Script webhook pattern)
     formData.append('payload', JSON.stringify(record));
-    // Explicit individual fields for maximum Apps Script compatibility
+    // Exact form field titles requested by user
+    formData.append('Full name', record.fullName);
+    formData.append('Organization', record.organization);
+    formData.append('Job title', record.jobTitle);
+    formData.append('Participation type', record.participationType);
+    formData.append('Email', record.email);
+    formData.append('Phone', record.phone);
+    formData.append('Investment amount (USD)', record.investmentAmount || '');
+    formData.append('Sectors of interest', record.sectorsOfInterest || '');
+    formData.append('Additional notes', record.additionalNotes || '');
+    // Standard camelCase fields for code access
     formData.append('ticketNumber', record.ticketNumber);
     formData.append('fullName', record.fullName);
     formData.append('organization', record.organization);
