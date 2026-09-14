@@ -170,18 +170,17 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
     };
 
     try {
-// Sync registration to Google Sheets v3
+// Sync registration to Google Sheets v4
 const googleSheetWebhookUrl =
   'https://script.google.com/macros/s/AKfycby6LrkJuY07tbFdFCDj_W0tJsTtPxuOsdEOc8N5kLkQ7BGskVO0g1wfzm0cAJLTrLLVSw/exec';
 
+const formData = new FormData();
+formData.append('payload', JSON.stringify(payload));
+
 fetch(googleSheetWebhookUrl, {
   method: 'POST',
+  body: formData,
   mode: 'no-cors',
-  keepalive: true,
-  headers: {
-    'Content-Type': 'text/plain;charset=utf-8',
-  },
-  body: JSON.stringify(payload),
 }).catch((error) => {
   console.error('Google Sheets sync failed:', error);
 });
